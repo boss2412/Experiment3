@@ -1,0 +1,209 @@
+Aim - Demonstration of various git operations on local and remote
+repository using git cheat-sheet.
+
+Theory – 
+Some git commands are – 
+1.	git --version: Displays the installed version of Git.
+2.	mkdir<dir name>: Creates a new directory named.
+3.	git init : Initialize the new git repository in the current directory.
+4.	nano <file name> : Opens the nano text editor to create or edit the file.
+5.	git status : Shows the status of the working directory and staging area, including untracked files.
+6.	git add –all : Adds all changes in the working directory to the staging area.
+7.	git commit -m "some message" : Commits the staged changes with the some message.
+8.	git remote add origin <url> : Adds a remote repository named origin with the specified URL.
+9.	git push -u origin main : Pushes the committed changes to the main branch of the remote repository and sets the upstream branch.
+10.	git log : Displays the commit history.
+11.	ls : Lists the files in the current directory.
+12.	git rm --cached <file name>: Removes the file from the staging area but keeps it in the working directory.
+
+Commands -
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git --version
+git version 2.46.0.windows.1
+
+nura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ mkdir Experiment3
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ cd Experiment3/
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git init
+Initialized empty Git repository in D:/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/.git/
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (master)
+$ git remote add origin https://github.com/boss2412/Experiment3.git
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (master)
+$ git remote -v
+origin  https://github.com/boss2412/Experiment3.git (fetch)
+origin  https://github.com/boss2412/Experiment3.git (push)
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (master)
+$ git branch
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (master)
+$ git branch -M main
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git branch
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ ls -a
+./  ../  .git/
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ cd ..
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git push origin main
+Everything up-to-date
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git submodule add https://github.com/boss2412/Experiment3.git
+Adding existing repo at 'Experiment3' to the index
+warning: in the working copy of '.gitmodules', LF will be replaced by CRLF the next time Git touches it
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitmodules
+        new file:   Experiment3
+        new file:   Experiment_3
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Experiment_3
+
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git add .
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git commit -m "Experiment 3 Added to DevOps_Lab"
+[main 822dbae] Experiment 3 Added to DevOps_Lab
+ 2 files changed, 4 insertions(+)
+ create mode 100644 .gitmodules
+ create mode 160000 Experiment3
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 423 bytes | 423.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/boss2412/DevOps_Lab.git
+   e197133..822dbae  main -> main
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git log
+commit 3c5e41f2d5f99c7f1d1f4bb8cc6154c461feafd1 (HEAD -> main, origin/main)
+Author: Anurag Tiwari <tiwarianurag2412@gmail.com>
+Date:   Fri Aug 30 20:27:58 2024 +0530
+
+    Readme Added
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git  pull origin main
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1001 bytes | 125.00 KiB/s, done.
+From https://github.com/boss2412/Experiment3
+ * branch            main       -> FETCH_HEAD
+   3c5e41f..2c58039  main       -> origin/main
+Updating 3c5e41f..2c58039
+Fast-forward
+ New_Folder/temp | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 New_Folder/temp
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ ls
+New_Folder/  README.md
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git branch
+* main
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git branch new_branch
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git branch
+* main
+  new_branch
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (main)
+$ git checkout new_branch
+Switched to branch 'new_branch'
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (new_branch)
+$ git checkout -b second_branch
+Switched to a new branch 'second_branch'
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (second_branch)
+$ git branch
+  main
+  new_branch
+* second_branch
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (second_branch)
+$ git checkout new_branch
+Switched to branch 'new_branch'
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (new_branch)
+$ git branch -d second_branch
+Deleted branch second_branch (was 2c58039).
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (new_branch)
+$ git branch
+  main
+* new_branch
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3 (new_branch)
+$ cd New_Folder/
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (new_branch)
+$ ls
+temp
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (new_branch)
+$ rm temp
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (new_branch)
+$ ls
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (new_branch)
+$ git diff main
+diff --git a/New_Folder/temp b/New_Folder/temp
+deleted file mode 100644
+index 9a17a7a..0000000
+--- a/New_Folder/temp
++++ /dev/null
+@@ -1 +0,0 @@
+-Temporary file to show pull command.
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (new_branch)
+$ git checkout main
+Switched to branch 'main'
+D       New_Folder/temp
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (main)
+$ git branch -d new_branch
+Deleted branch new_branch (was 2c58039).
+
+anura@Boss2412 MINGW64 /d/College/3_Third_Year/Semester_5/DevOps_Lab/Experiment3/New_Folder (main)
+$ git branch
+* main
+
+
+
